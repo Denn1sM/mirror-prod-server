@@ -1,7 +1,11 @@
 import os
 from flask import Flask, send_from_directory
+from flask_cors import CORS
+import logging
 
 app = Flask(__name__)
+CORS(app)
+logging.getLogger('flask_cors').level = logging.DEBUG
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
