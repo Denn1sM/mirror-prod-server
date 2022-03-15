@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getDecadeEnd, getDecadeStart } from '@wojtekmaj/date-utils';
+import {getDecadeEnd, getDecadeStart} from '@wojtekmaj/date-utils';
 import Tile from '../Tile';
-import { getDecadeLabel } from '../shared/dates';
-import { formatYear as defaultFormatYear } from '../shared/dateFormatter';
-import { tileProps } from '../shared/propTypes';
+import {getDecadeLabel} from '../shared/dates';
+import {formatYear as defaultFormatYear} from '../shared/dateFormatter';
+import {tileProps} from '../shared/propTypes';
 
 function ownKeys(object, enumerableOnly) {
   const keys = Object.keys(object);

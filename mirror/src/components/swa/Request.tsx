@@ -1,4 +1,4 @@
-import { Verbindung } from '../../state/transport/to';
+import {Verbindung} from '../../state/transport/to';
 
 export const fetchData = async (einstieg: string) => {
   const alleVerbindungen: Array<Verbindung> = [];

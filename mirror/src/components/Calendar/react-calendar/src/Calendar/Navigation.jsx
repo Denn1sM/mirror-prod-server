@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getUserLocale } from 'get-user-locale';
+import {getUserLocale} from 'get-user-locale';
 
 import {
-  getBeginNext,
-  getBeginNext2,
-  getBeginPrevious,
-  getBeginPrevious2,
-  getCenturyLabel,
-  getDecadeLabel,
-  getEndPrevious,
-  getEndPrevious2,
+    getBeginNext,
+    getBeginNext2,
+    getBeginPrevious,
+    getBeginPrevious2,
+    getCenturyLabel,
+    getDecadeLabel,
+    getEndPrevious,
+    getEndPrevious2,
 } from '../shared/dates';
-import { formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear } from '../shared/dateFormatter';
-import { isView, isViews } from '../shared/propTypes';
+import {formatMonthYear as defaultFormatMonthYear, formatYear as defaultFormatYear} from '../shared/dateFormatter';
+import {isView, isViews} from '../shared/propTypes';
 
 const className = 'react-calendar__navigation';
 

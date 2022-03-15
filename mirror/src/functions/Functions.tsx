@@ -1,4 +1,5 @@
-import { Verbindung } from '../state/transport/to';
+import {Verbindung} from '../state/transport/to';
+
 
 export const getDummyConnections = (): Array<Verbindung> => [
   {
@@ -31,4 +32,19 @@ export const getDummyConnections = (): Array<Verbindung> => [
     ziel: 'Somewhere',
 
   },
+  {
+    time: '10:49',
+    linie: '1',
+    ziel: 'Somewhere',
+
+  },
+  {
+    time: '10:49',
+    linie: '1',
+    ziel: 'Somewhere',
+
+  },
 ];
+
+
+

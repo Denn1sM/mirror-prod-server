@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { makeStyles, MuiThemeProvider } from '@material-ui/core';
-import { Provider } from 'react-redux';
+import {makeStyles, MuiThemeProvider} from '@material-ui/core';
+import {Provider} from 'react-redux';
 import theme from '../theme';
 import Layout from './Layout';
 import Router from './Router';
 import store from '../state/store.js';
+import {BrowserRouter} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -30,8 +31,11 @@ const App: React.FC = () => {
     <div className={classes.root}>
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
+          <BrowserRouter>
             <Router />
-            <Layout />
+            <Layout/>
+          </BrowserRouter>
+
 
         </Provider>
 

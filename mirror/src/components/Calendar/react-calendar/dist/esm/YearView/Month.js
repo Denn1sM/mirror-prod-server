@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getMonthEnd, getMonthStart } from '@wojtekmaj/date-utils';
+import {getMonthEnd, getMonthStart} from '@wojtekmaj/date-utils';
 import Tile from '../Tile';
-import { formatMonth as defaultFormatMonth, formatMonthYear as defaultFormatMonthYear } from '../shared/dateFormatter';
-import { tileProps } from '../shared/propTypes';
+import {formatMonth as defaultFormatMonth, formatMonthYear as defaultFormatMonthYear} from '../shared/dateFormatter';
+import {tileProps} from '../shared/propTypes';
 
 function ownKeys(object, enumerableOnly) {
   const keys = Object.keys(object);

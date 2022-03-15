@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import mergeClassNames from 'merge-class-names';
 import Navigation from './Calendar/Navigation';
@@ -6,13 +6,9 @@ import CenturyView from './CenturyView';
 import DecadeView from './DecadeView';
 import YearView from './YearView';
 import MonthView from './MonthView';
-import {
-  getBegin, getBeginNext, getEnd, getValueRange,
-} from './shared/dates';
-import {
-  isCalendarType, isClassName, isMaxDate, isMinDate, isRef, isValue, isView,
-} from './shared/propTypes';
-import { between } from './shared/utils';
+import {getBegin, getBeginNext, getEnd, getValueRange,} from './shared/dates';
+import {isCalendarType, isClassName, isMaxDate, isMinDate, isRef, isValue, isView,} from './shared/propTypes';
+import {between} from './shared/utils';
 
 function _extends() {
   _extends = Object.assign || function (target) {

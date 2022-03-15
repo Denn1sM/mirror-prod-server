@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useCallback, useEffect, useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import { IconButton } from '@material-ui/core';
-import { fetchData } from './Request';
-import { getDummyConnections } from '../../functions/Functions';
-import { Verbindung } from '../../state/transport/to';
+import {IconButton} from '@material-ui/core';
+import {fetchData} from './Request';
+import {getDummyConnections} from '../../functions/Functions';
+import {Verbindung} from '../../state/transport/to';
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -86,30 +86,48 @@ const useStyles = makeStyles((theme) => ({
   indenter: {
     paddingLeft: '20px',
     '&:nth-child(2)': {
-      paddingLeft: '70px',
+      paddingLeft: '60px',
     },
     '&:nth-child(3)': {
-      paddingLeft: '105px',
+      paddingLeft: '90px',
     },
     '&:nth-child(4)': {
-      paddingLeft: '125px',
+      paddingLeft: '115px',
     },
     '&:nth-child(5)': {
+      paddingLeft: '130px',
+    },
+    '&:nth-child(6)': {
       paddingLeft: '140px',
+    },
+    '&:nth-child(7)': {
+      paddingLeft: '145px',
+    },
+    '&:nth-child(8)': {
+      paddingLeft: '148px',
     },
   },
   indenterInverted: {
-    paddingLeft: '140px',
+    paddingLeft: '148px',
     '&:nth-child(2)': {
-      paddingLeft: '125px',
+      paddingLeft: '145px',
     },
     '&:nth-child(3)': {
-      paddingLeft: '105px',
+      paddingLeft: '140px',
     },
     '&:nth-child(4)': {
-      paddingLeft: '70px',
+      paddingLeft: '130px',
     },
     '&:nth-child(5)': {
+      paddingLeft: '115px',
+    },
+    '&:nth-child(6)': {
+      paddingLeft: '90px',
+    },
+    '&:nth-child(7)': {
+      paddingLeft: '60px',
+    },
+    '&:nth-child(8)': {
       paddingLeft: '20px',
     },
   },
@@ -151,10 +169,10 @@ const Connections: React.FC<Props> = (props) => {
   return (
     <div className={classes.list}>
       <List className={classes.list}>
-        {alleVerbindungen?.map((verbindung, index) => (
-          <>
-            {props.invertOrientation
-              ? (
+        {alleVerbindungen?.map((verbindung, index) => {
+
+            if(props.invertOrientation && index<8){
+              return(
                 <div key={index} className={classes.indenterInverted}>
 
                   <ListItem className={classes.listItem}>
@@ -186,8 +204,9 @@ const Connections: React.FC<Props> = (props) => {
 
                   </ListItem>
                 </div>
-              )
-              : (
+              )}
+            if(!props.invertOrientation && index<8){
+              return (
                 <div key={index} className={classes.indenter}>
 
                   <ListItem className={classes.listItem}>
@@ -220,8 +239,7 @@ const Connections: React.FC<Props> = (props) => {
                   </ListItem>
                 </div>
               )}
-          </>
-        ))}
+            })}
 
       </List>
     </div>

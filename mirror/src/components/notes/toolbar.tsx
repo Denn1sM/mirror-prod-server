@@ -1,9 +1,9 @@
-import React, { Dispatch, memo, VFC } from "react";
+import React, {Dispatch, memo, VFC} from "react";
 import styled from "@emotion/styled";
 
-import { Action } from "../types/canvas";
-import { Button } from "@material-ui/core";
-import { ColorPicker, WidthSlider } from ".";
+import {Action} from "../types/canvas";
+import {Button} from "@material-ui/core";
+import {ColorPicker, WidthSlider} from ".";
 import {FabricCanvasContainer} from "./containers";
 
 type Props = {

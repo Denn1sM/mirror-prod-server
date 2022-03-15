@@ -1,13 +1,15 @@
 import React from "react";
-import { FabricCanvasContainer } from "./containers";
+import {FabricCanvasContainer} from "./containers";
 import {Canvas, Toolbar} from "./index";
 import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
     root: {
-        position: "absolute",
-        left: "150px",
-        top: "50px",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        left: "200px",
         width: "calc(100%-100px)",
         pointerEvents: "all"
     }
@@ -17,13 +19,14 @@ const useStyles = makeStyles(() => ({
 const NotesComponent: React.FC = () => {
     const classes = useStyles();
     return(
-            <FabricCanvasContainer.Provider>
-                <div className={classes.root}>
+        <div className={classes.root}>
+        <FabricCanvasContainer.Provider>
                     <Canvas />
                     <Toolbar />
-                </div>
 
             </FabricCanvasContainer.Provider>
+        </div>
+
     )
 
 };

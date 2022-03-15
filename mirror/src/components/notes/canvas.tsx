@@ -1,8 +1,8 @@
-import React, { Dispatch, memo, useEffect, VFC } from "react";
+import React, {Dispatch, memo, useEffect, VFC} from "react";
 import styled from "@emotion/styled";
-import { fabric } from "fabric";
+import {fabric} from "fabric";
 
-import { Action } from "../types/canvas";
+import {Action} from "../types/canvas";
 import {FabricCanvasContainer} from "./containers";
 
 const CANVAS_ID = "canvas";

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Flex from './Flex';
-import { getTileClasses } from './shared/utils';
-import { tileGroupProps } from './shared/propTypes';
+import {getTileClasses} from './shared/utils';
+import {tileGroupProps} from './shared/propTypes';
 
 function ownKeys(object, enumerableOnly) {
   const keys = Object.keys(object);

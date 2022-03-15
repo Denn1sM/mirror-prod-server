@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Connections from '../components/swa/Connections';
 import Clock from '../components/Clock/Clock';
 import Kalender from '../components/Calendar/Kalender';

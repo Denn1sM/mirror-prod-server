@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import mergeClassNames from 'merge-class-names';
-import { tileProps } from './shared/propTypes';
+import {tileProps} from './shared/propTypes';
 
 function ownKeys(object, enumerableOnly) {
   const keys = Object.keys(object);

@@ -1,10 +1,10 @@
-import React, { memo, useEffect, useState, VFC } from "react";
+import React, {memo, useState, VFC} from "react";
 import styled from "@emotion/styled";
-import { Dialog, Button, IconButton } from "@material-ui/core";
+import {Dialog, IconButton} from "@material-ui/core";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
-import { ColorChangeHandler, TwitterPicker } from "react-color";
+import {ColorChangeHandler, TwitterPicker} from "react-color";
 
-import { Action } from "../types/canvas";
+import {Action} from "../types/canvas";
 import {FabricCanvasContainer} from "./containers";
 
 type Props = {

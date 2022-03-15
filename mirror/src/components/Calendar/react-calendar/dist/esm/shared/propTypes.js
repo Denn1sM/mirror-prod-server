@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { CALENDAR_TYPES } from './const';
+import {CALENDAR_TYPES} from './const';
 
 function _typeof(obj) {
   '@babel/helpers - typeof';

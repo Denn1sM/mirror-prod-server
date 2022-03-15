@@ -1,9 +1,9 @@
 import React from 'react';
-import { getDecadeStart } from '@wojtekmaj/date-utils';
+import {getDecadeStart} from '@wojtekmaj/date-utils';
 import TileGroup from '../TileGroup';
 import Decade from './Decade';
-import { getBeginOfCenturyYear } from '../shared/dates';
-import { tileGroupProps } from '../shared/propTypes';
+import {getBeginOfCenturyYear} from '../shared/dates';
+import {tileGroupProps} from '../shared/propTypes';
 
 function ownKeys(object, enumerableOnly) {
   const keys = Object.keys(object);

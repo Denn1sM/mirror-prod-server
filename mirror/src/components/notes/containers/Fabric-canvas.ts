@@ -1,5 +1,4 @@
-import { fabric } from "fabric";
-import { Reducer, useReducer, useState } from "react";
+import {Reducer, useReducer} from "react";
 import {Action, State} from "../../types/canvas";
 import {createContainer} from "unstated-next";
 

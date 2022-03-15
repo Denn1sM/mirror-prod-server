@@ -1,6 +1,6 @@
-import React, { VFC } from "react";
+import React, {VFC} from "react";
 import styled from "@emotion/styled";
-import { InputLabel, Slider } from "@material-ui/core";
+import {Slider} from "@material-ui/core";
 import {FabricCanvasContainer} from "./containers";
 
 

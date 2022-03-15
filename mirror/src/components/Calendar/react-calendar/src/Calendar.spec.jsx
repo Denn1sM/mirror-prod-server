@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { getMonthStart } from '@wojtekmaj/date-utils';
+import {mount, shallow} from 'enzyme';
+import {getMonthStart} from '@wojtekmaj/date-utils';
 
 import Calendar from './Calendar';
 

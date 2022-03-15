@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactWeather, { useOpenWeather } from 'react-open-weather';
-import { makeStyles } from '@material-ui/core/styles';
+import ReactWeather, {useOpenWeather} from 'react-open-weather';
+import {makeStyles} from '@material-ui/core/styles';
 import theme from '../../theme';
 
 const useStyles = makeStyles((theme) => ({
