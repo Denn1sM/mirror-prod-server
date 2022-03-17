@@ -1,6 +1,7 @@
 import {Reducer, useReducer} from "react";
 import {Action, State} from "../../types/canvas";
 import {createContainer} from "unstated-next";
+import {saveImage} from "../api/Requests";
 
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -37,13 +38,13 @@ const reducer: Reducer<State, Action> = (state, action) => {
         return state;
       }
       const a = document.createElement("a");
-      a.download = "canvas.png";
+      //a.download = "canvas.png";
       a.href = state.canvas.toDataURL();
-      a.target = "_blank";
-
-      document.body.append(a);
-      a.click();
-      document.body.removeChild(a);
+      //a.target = "_blank";
+      saveImage(a.href)
+      //document.body.append(a);
+      //a.click();
+      //document.body.removeChild(a);
 
       return state;
     }
