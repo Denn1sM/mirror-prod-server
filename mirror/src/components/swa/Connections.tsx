@@ -33,7 +33,12 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   time: {
-    width: '30%',
+    width: '35%',
+  },
+  delay: {
+    width: "15%",
+    color: "red",
+    paddingLeft: "5px"
   },
   ziel: {
     paddingLeft: '30px',
@@ -150,7 +155,7 @@ const Connections: React.FC<Props> = (props) => {
   const fetchIt = useCallback(async () => {
     console.log('Started fetch');
     if (!lastRequestTime || (lastRequestTime && lastRequestTime < (Date.now() - 60000))) {
-      const x = await fetchData(props.haltestelle);
+      const x = await fetchData(props.haltestelle)//fetchData(props.haltestelle);
       setAlleVerbindungen(x);
       setLastRequestTime(Date.now());
       console.log(x);
@@ -164,7 +169,7 @@ const Connections: React.FC<Props> = (props) => {
     setInterval(() => fetchIt(), 60000);
   }, [fetchIt]);
 
-  const trams = ['1', '2', '3', '4', '5', '6'];
+  const trams = ['1', '2', '3', '4', '5', '6', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6'];
 
   return (
     <div className={classes.list}>
@@ -229,6 +234,9 @@ const Connections: React.FC<Props> = (props) => {
                     <ListItemText className={classes.content} disableTypography>
                       <div className={classes.time}>
                         {verbindung.time}
+                      </div>
+                      <div className={classes.delay}>
+                        {verbindung.delay ? `+ ${verbindung.delay}` : ""}
                       </div>
                       <div className={classes.ziel}>
                         {verbindung.ziel}

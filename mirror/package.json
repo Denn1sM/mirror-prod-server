@@ -2,6 +2,11 @@
   "name": "mirror",
   "version": "0.1.0",
   "private": true,
+  "author": "demay",
+  "description": "Mirror app",
+  "main": "./public/electron.js",
+  "email": "d.mayer97@web.de",
+  "homepage": "./",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -16,8 +21,9 @@
     "@testing-library/user-event": "^12.8.3",
     "@types/fabric": "4.2.4",
     "chart.js": "^3.5.1",
-    "concurrently": "^6.2.1",
+    "concurrently": "^8.2.2",
     "fabric": "4.3.1",
+    "luxon": "^3.4.3",
     "react": "^17.0.2",
     "react-calendar": "3.3.1",
     "react-chartjs-2": "^3.0.5",
@@ -41,28 +47,58 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint **/*.js **/*.tsx",
-    "fix": "eslint --fix **/*.js **/*.tsx"
+    "fix": "eslint --fix **/*.js **/*.tsx",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:mac": "electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "electron-builder -l -c.extraMetadata.main=build/electron.js"
+
   },
   "browserslist": {
     "production": [
+      "last 1 electron version",
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
     "development": [
+      "last 1 electron version",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
   },
   "devDependencies": {
+    "@types/luxon": "^3.3.3",
     "@types/react": "^17.0.19",
     "@types/react-calendar": "^3.4.3",
     "@types/react-color": "^3.0.6",
     "@types/react-router-dom": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
+    "cross-env": "^7.0.3",
+    "electron": "^27.0.2",
+    "electron-builder": "^24.6.4",
+    "electronmon": "^2.0.2",
     "eslint-plugin-react": "^7.29.3",
-    "react-router-dom": "^5.3.0"
+    "react-router-dom": "^5.3.0",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.electron.mirror",
+    "productName": "Mirror App",
+    "files": ["build/**/*", "node_modules/**/*"],
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
   }
+}
 }

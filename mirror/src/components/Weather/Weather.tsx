@@ -47,7 +47,7 @@ const Weather: React.FC = () => {
         data={data}
         lang="de"
         locationLabel="Augsburg"
-        unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+        unitsLabels={{ temperature: '°C', windSpeed: 'Km/h' }}
         showForecast
       />
     </div>
