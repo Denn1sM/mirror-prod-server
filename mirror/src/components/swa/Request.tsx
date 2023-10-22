@@ -18,14 +18,9 @@ const getTimeWithDelay = (plannedDateTime: string, realDateTime: string | undefi
     const planned = DateTime.fromISO(plannedDateTime)
     const real = DateTime.fromISO(realDateTime)
     const diff = real.diff(planned)
-    console.log("DIFF")
-    console.log(diff.toMillis())
-    console.log(planned.toMillis())
-    console.log(real.toMillis())
-
     return {
       time: planned.toFormat("HH:mm"),
-      delayed: diff.toMillis() > 60000,
+      delayed: diff.toMillis() > 0,
       delay: diff.toFormat("m")
     }
   }

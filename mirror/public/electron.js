@@ -1,5 +1,5 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require("electron");
+const { app, BrowserWindow, protocol, net } = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -56,6 +56,11 @@ app.whenReady().then(() => {
     let win = createWindow();
     setupLocalFilesNormalizerProxy();
     win.setFullScreen(true)
+
+    //does not work or is overridden
+    protocol.handle('file://api', (request) => {
+        net.fetch('https://api' + request.url.slice('file://api'.length))
+    })
 
     app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the
