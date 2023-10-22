@@ -33,8 +33,19 @@ def serve(path):
 # AVV Data request
 @app.route('/avv/<string:stop>/<string:date>/<string:time>', methods=['GET'])
 def avvdata(stop, date, time):
+    '''
     body = "language=de&deleteAssignedStops_dm=1&trITMOTvalue100=10&useProxFootSearch=0&itdLPxx_today=18&mode=direct&lsShowTrainsExplicit=0&type_dm=any&name_dm=" + stop + "&includedMeans=checkbox&inclMOT_0=1&inclMOT_1=1&inclMOT_2=1&inclMOT_3=1&inclMOT_4=1&inclMOT_5=1&inclMOT_6=1&inclMOT_7=1&inclMOT_8=1&inclMOT_9=1&inclMOT_10=1&inclMOT_11=1&commonMacro=true&itdLPxx_depOnly=1&itdDateDayMonthYear=" + date + "& maxAssignedStops=1& hideBannerInfo=1& execInst=normal& limit=15 & itdTime=" + time + "& useAllStops=1"
     response = requests.post(avvUrl, headers=headers, json=body)
+    print(response)
+    '''
+    url = "https://fahrtauskunft.avv-augsburg.de/efa/XML_DM_REQUEST?coordOutputFormat=WGS84%5Bdd.ddddd%5D&deleteAssignedStops_dm=1&depSequence=30&depType=stopEvents&doNotSearchForStops=1&genMaps=0&imparedOptionsActive=1&inclMOT_10=true&inclMOT_11=true&inclMOT_13%20=true&inclMOT_4=true&inclMOT_5=true&inclMOT_6=true&inclMOT_7=true&includeCompleteStopSeq=1&includedMeans=checkbox&itOptionsActive=1&itdDateTimeDepArr=dep&language=de&locationServerActive=1&maxTimeLoop=1&mode=direct&name_dm=de%3A09761%3A768&outputFormat=rapidJSON&ptOptionsActive=1&serverInfo=1&sl3plusDMMacro=1&type_dm=any&useAllStops=1&useProxFootSearch=0&useRealtime=1&version=10.5.17.3"
+    payload = {}
+    headers = {
+      'Cookie': 'NSC_wjq-efgbt-fgb-iuuqt=ffffffffc0166fd045525d5f4f58455e445a4a421488'
+    }
+    response = requests.request("GET", url, headers=headers, data=payload)
+
+    print(response.text)
     return response.text
 
 # Save notes-picture
