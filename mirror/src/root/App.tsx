@@ -6,7 +6,7 @@ import theme from '../theme';
 import Layout from './Layout';
 import Router from './Router';
 import store from '../state/store.js';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -31,10 +31,10 @@ const App: React.FC = () => {
     <div className={classes.root}>
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
-          <BrowserRouter>
+          <HashRouter>
             <Router />
             <Layout/>
-          </BrowserRouter>
+          </HashRouter>
 
 
         </Provider>

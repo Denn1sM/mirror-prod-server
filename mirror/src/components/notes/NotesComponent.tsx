@@ -20,11 +20,15 @@ const NotesComponent: React.FC = () => {
     const classes = useStyles();
     return(
         <div className={classes.root}>
+            {/*
+
         <FabricCanvasContainer.Provider>
                     <Canvas />
                     <Toolbar />
 
             </FabricCanvasContainer.Provider>
+            */}
+
         </div>
 
     )

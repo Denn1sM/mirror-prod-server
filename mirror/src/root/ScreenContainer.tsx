@@ -186,7 +186,7 @@ const ScreenContainer: React.FC = () => {
   return (
     <>
       <div className={classes.topLeft}>
-        <Connections key="2000116" haltestelle="2000116" invertOrientation={false} />
+        <Connections key="2000116" haltestelle="de%3A09761%3A116" invertOrientation={false} />
       </div>
 
       <div className={classes.middle}>
@@ -210,7 +210,7 @@ const ScreenContainer: React.FC = () => {
       </div>
 
       <div className={classes.bottomLeft}>
-        <Connections key="2000768" haltestelle="2000768" invertOrientation />
+        <Connections key="2000768" haltestelle="de%3A09761%3A768&" invertOrientation />
       </div>
 
       <div className={classes.topRight}>

@@ -1,6 +1,65 @@
 import {Verbindung} from '../../state/transport/to';
+import {DateTime, Duration} from "luxon";
 
-export const fetchData = async (einstieg: string) => {
+
+interface TimeWithDelay {
+  time: string
+  delayed: boolean
+  delay?: string
+}
+
+const getTimeWithDelay = (plannedDateTime: string, realDateTime: string | undefined): TimeWithDelay => {
+  if(!realDateTime) {
+    return {
+      time: DateTime.fromISO(plannedDateTime).toFormat("HH:mm"),
+      delayed: false,
+    }
+  } else {
+    const planned = DateTime.fromISO(plannedDateTime)
+    const real = DateTime.fromISO(realDateTime)
+    const diff = real.diff(planned)
+    console.log("DIFF")
+    console.log(diff.toMillis())
+    console.log(planned.toMillis())
+    console.log(real.toMillis())
+
+    return {
+      time: planned.toFormat("HH:mm"),
+      delayed: diff.toMillis() > 60000,
+      delay: diff.toFormat("m")
+    }
+  }
+}
+
+export const fetchData = (haltestellenId: string) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Cookie", "NSC_wjq-efgbt-fgb-iuuqt=ffffffffc0166fd045525d5f4f58455e445a4a421488");
+
+  const requestOptions: RequestInit = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  return fetch("https://fahrtauskunft.avv-augsburg.de/efa/XML_DM_REQUEST?coordOutputFormat=WGS84%5Bdd.ddddd%5D&deleteAssignedStops_dm=1&depSequence=30&depType=stopEvents&doNotSearchForStops=1&genMaps=0&imparedOptionsActive=1&inclMOT_10=true&inclMOT_11=true&inclMOT_13%20=true&inclMOT_4=true&inclMOT_5=true&inclMOT_6=true&inclMOT_7=true&includeCompleteStopSeq=1&includedMeans=checkbox&itOptionsActive=1&itdDateTimeDepArr=dep&language=de&locationServerActive=1&maxTimeLoop=1&mode=direct&name_dm=" + haltestellenId + "&outputFormat=rapidJSON&ptOptionsActive=1&serverInfo=1&sl3plusDMMacro=1&type_dm=any&useAllStops=1&useProxFootSearch=0&useRealtime=1&version=10.5.17.3", requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        const resultJson = JSON.parse(result)
+        const verbindungen: Verbindung[] = resultJson.stopEvents.map((element: any) => {
+          const time = getTimeWithDelay(element.departureTimePlanned, element.departureTimeEstimated)
+          return {
+            time: time.time,
+            linie: element.transportation.number,
+            ziel: element.transportation.destination.name,
+            delay: time.delayed ? time.delay : undefined
+          }
+        })
+      return verbindungen
+      })
+      .catch(error => console.log('error', error));
+}
+
+export const fetchDataOld = async (einstieg: string) => {
   const alleVerbindungen: Array<Verbindung> = [];
 
   const date = new Date();
@@ -81,10 +140,13 @@ export const fetchData = async (einstieg: string) => {
 
   return fetch(`/avv/${einstieg}/${dateString}/${currentTime}`)
     .then((awaitedResponse) => {
+      console.log("RESPONSE FROM PYTHON SERVER")
       console.log(awaitedResponse);
       return awaitedResponse.text();
     })
     .then((response) => {
+      console.log("RESOLVED RESPONSE")
+      console.log(response)
       for (let i = 0; i < 10; i++) {
         const elem = response.indexOf('dmTr');
         response = response.slice(elem, response.length);
